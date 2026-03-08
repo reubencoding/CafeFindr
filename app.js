@@ -79,11 +79,7 @@ function filterCafes() {
 
   let filtered = cafes.filter(c => {
     const matchLocation = currentLocation === 'All' || c.location === currentLocation;
-    const matchQ = !q ||
-      c.name.toLowerCase().includes(q) ||
-      c.location.toLowerCase().includes(q) ||
-      c.tags.some(t => t.toLowerCase().includes(q)) ||
-      c.description.toLowerCase().includes(q);
+    const matchQ = !q || c.name.toLowerCase().includes(q);
     return matchLocation && matchQ;
   });
 

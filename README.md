@@ -217,6 +217,21 @@ If you don't want to use Firebase, here are other **free** backend options:
 - Make sure you're running the app on a local server (not just opening the file)
 - Check that the Firebase CDN scripts loaded correctly
 
+### Google Sign-in "unauthorized-domain" error
+This error occurs when the domain you're running your app on is not added to Firebase's authorized domains list. To fix it:
+
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Select your project
+3. Navigate to **Authentication → Settings** (or **Authentication → Sign-in method** → **Settings** tab)
+4. Click "Authorized domains"
+5. Add the following domains:
+   - `localhost`
+   - `127.0.0.1`
+   - Any custom domain you're using (e.g., `your-app.github.io`)
+6. Click "Save"
+
+**Note:** This is required for Google OAuth to work locally. Without it, Google Sign-in will fail with an "unauthorized-domain" error.
+
 ### "Permission denied" error
 - Check your Firestore security rules
 - Make sure the user is signed in

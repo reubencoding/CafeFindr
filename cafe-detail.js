@@ -391,7 +391,11 @@ async function submitReview(e) {
     closeReviewModalBtn();
     showToast('Review posted! ☕');
     document.getElementById('review-form')?.reset();
-    loadReviews();
+
+    // Small delay to ensure Firestore has indexed the new review before querying
+    setTimeout(() => {
+      loadReviews();
+    }, 300);
   } catch (err) {
     showToast('Error: ' + err.message);
   }

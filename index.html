@@ -39,12 +39,16 @@
 <div class="hero">
   <p class="eyebrow">EXPLORE</p>
   <h2>Chennai's Finest <span>Coffee Haunts</span></h2>
-  <p id="hero-sub">Discover handpicked cafés, from serene garden retreats to specialty roasteries</p>
+  <p class="hero-sub">Discover handpicked cafés, from serene garden retreats to specialty roasteries</p>
+
+  <!-- Search Container -->
+  <div class="search-container">
+    <input class="search-box" type="text" placeholder="🔍  Search cafés, areas, vibes..." id="search-input" oninput="filterCafes()" />
+  </div>
 </div>
 
-<!-- Controls -->
+<!-- Controls (Filters only) -->
 <div class="controls">
-  <input class="search-box" type="text" placeholder="🔍  Search cafés, areas, vibes..." id="search-input" oninput="filterCafes()" />
   <div class="filter-row">
     <div class="area-pills" id="area-pills"></div>
     <select class="sort-select" id="sort-select" onchange="sortCafes()">
