@@ -1,6 +1,8 @@
-# ☕ BREW — Chennai's Café Guide
+# ☕ CafeFindr (formerly BREW) — Chennai's Café Guide
 
 A full-stack café discovery and booking web application for Chennai, built with **vanilla HTML/CSS/JS** and **Firebase** (free tier).
+
+**Repository**: https://github.com/reubencoding/CafeFindr
 
 ---
 
@@ -261,7 +263,7 @@ Edit the CSS variables in `styles.css` to change the color scheme.
 
 ## 📄 License
 
-This project is open source. Feel free to use, modify, and distribute!
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
