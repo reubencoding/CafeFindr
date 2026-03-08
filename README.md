@@ -29,12 +29,12 @@ A full-stack café discovery and booking web application for Chennai, built with
 
 ```
 cafe/
-├── index.html          # Main discovery page
-├── auth.html           # Login/signup page
-├── cafe-detail.html    # Individual café page
-├── bookings.html       # My bookings page
-├── favorites.html      # My favorites page
-├── reviews.html        # Community reviews page
+├── auth.html           # Login/signup page (default landing page)
+├── index.html          # Main discovery page (protected, redirects to auth.html if not signed in)
+├── cafe-detail.html    # Individual café page (public)
+├── bookings.html       # My bookings page (protected)
+├── favorites.html      # My favorites page (protected)
+├── reviews.html        # Community reviews page (public)
 ├── styles.css          # All styles
 ├── firebase-config.js  # Firebase configuration
 ├── app.js              # Main app logic
@@ -96,6 +96,25 @@ const firebaseConfig = {
 3. Choose **Start in test mode** (allows read/write for 30 days)
 4. Select a location (e.g., "asia-south1" for India)
 5. Click "Enable"
+
+---
+
+## 🔐 Authentication Flow
+
+- **Default landing page**: `auth.html` (login/signup)
+- If an unauthenticated user tries to access `index.html` directly, they are automatically redirected to `auth.html`
+- **Public pages** (accessible without authentication):
+  - `auth.html` - Login/signup
+  - `cafe-detail.html` - View café details (requires sign-in only for bookings/reviews)
+  - `reviews.html` - Community reviews
+- **Protected pages** (require authentication):
+  - `index.html` - Main discovery page
+  - `bookings.html` - My bookings
+  - `favorites.html` - My favorites
+- After successful authentication, users are redirected to `index.html`
+- After sign out, users are redirected to `auth.html`
+
+---
 
 ### Step 6: Create Security Rules
 

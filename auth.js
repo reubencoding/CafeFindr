@@ -13,7 +13,7 @@ auth.onAuthStateChanged((user) => {
   } else {
     currentUser = null;
     // If not on auth page, redirect to auth (except for public pages)
-    const publicPages = ['index.html', 'cafe-detail.html', 'reviews.html'];
+    const publicPages = ['cafe-detail.html', 'reviews.html'];
     const isPublicPage = publicPages.some(page => window.location.pathname.includes(page));
     if (!isPublicPage && !window.location.pathname.includes('auth.html')) {
       window.location.href = 'auth.html';
