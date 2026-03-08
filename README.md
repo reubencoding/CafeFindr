@@ -9,7 +9,7 @@ A full-stack café discovery and booking web application for Chennai, built with
 ## 🚀 Features
 
 ### Core Features
-- **Café Discovery** — Browse 12+ handpicked cafés across Chennai
+- **Café Discovery** — Browse 19+ handpicked cafés across Chennai
 - **Search & Filter** — Search by name, area, or vibe; filter by neighborhood
 - **Detailed Pages** — Each café has its own page with menu, reviews, and booking
 - **Favorites** — Save cafés to your personal list
