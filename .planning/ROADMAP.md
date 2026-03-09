@@ -28,7 +28,10 @@
 3. Zero console errors on all pages (auth, index, café-detail, bookings, favorites, reviews) when signed in or signed out
 4. Stray blank component with close button removed from index.html page
 
-**Plans:** TBD
+**Plans:** 1 plan
+
+Plans:
+- [ ] PLAN.md — Fix JavaScript stability: remove duplicate global declarations, make auth.js safe on all pages, remove stray modal from index.html.
 
 ---
 
@@ -47,7 +50,10 @@
 4. Creating a new booking from café detail page succeeds and appears in bookings list
 5. Firestore query correctly filters to show only current user's bookings (based on `userId`)
 
-**Plans:** TBD
+**Plans:** 1 plan
+
+Plans:
+- [ ] PLAN.md — Fix bookings system: resolve infinite loading, ensure correct reservation display and cancellation, and validate booking creation.
 
 ---
 
@@ -66,7 +72,7 @@
 4. Query filters reviews correctly: only reviews matching exact `cafeId` are shown
 5. Empty state "No reviews yet" appears ONLY for cafés with zero reviews in Firestore
 
-**Plans:** TBD
+**Plans:** 1 plan (PLAN.md)
 
 ---
 
@@ -84,7 +90,7 @@
 3. User remains signed in across page navigation and browser sessions (auth state persists)
 4. No Firestore queries time out after 15 seconds (bookings, reviews, favorites all return within reasonable time)
 
-**Plans:** TBD
+**Plans:** 1 plan (PLAN.md)
 
 ## Coverage
 
