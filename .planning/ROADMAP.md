@@ -93,7 +93,12 @@ Plans:
 3. User remains signed in across page navigation and browser sessions (auth state persists)
 4. No Firestore queries time out after 15 seconds (bookings, reviews, favorites all return within reasonable time)
 
-**Plans:** 1 plan (PLAN.md)
+**Plans:** 1 plan
+
+Plans:
+- [ ] phase-4-01-PLAN.md — Add 15-second timeout protection to all remaining Firestore queries (reviews, favorites, cafe-detail) to ensure consistent performance and prevent indefinite hanging.
+
+---
 
 ## Coverage
 
