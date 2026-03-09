@@ -17,7 +17,9 @@
 <!-- Header -->
 <header>
   <a href="index.html" class="header-logo">
-    <div style="font-size:26px">☕</div>
+    <svg class="icon-coffee" style="width:26px;height:26px" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M2 21v-2.258l.316-2.632C3.604 15.518 4 14.392 4 13.186 4 7.365 8.363 3 13.318 3c4.562 0 8.249 3.898 8.249 8.724 0 4.297-3.422 7.802-8.001 8.462v2.112h-1.56V21H2zm2-4h14.959l.881-7.375C18.258 9.461 18 8.653 18 7.746 18 4.12 14.366 1 10.097 1S2.196 4.12 2 7.746c0 .908.258 1.715.719 2.38L4 17z"/>
+    </svg>
     <div>
       <h1>BREW</h1>
       <span>CHENNAI CAFÉS</span>
@@ -49,18 +51,29 @@
         <div class="detail-image-container">
           <img class="detail-image" id="detail-image" src="" alt="Cafe image" onerror="this.style.display='none'">
         </div>
-        <div class="detail-emoji" id="detail-emoji">☕</div>
+        <svg class="icon-coffee icon-coffee-xl" id="detail-emoji" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2 21v-2.258l.316-2.632C3.604 15.518 4 14.392 4 13.186 4 7.365 8.363 3 13.318 3c4.562 0 8.249 3.898 8.249 8.724 0 4.297-3.422 7.802-8.001 8.462v2.112h-1.56V21H2zm2-4h14.959l.881-7.375C18.258 9.461 18 8.653 18 7.746 18 4.12 14.366 1 10.097 1S2.196 4.12 2 7.746c0 .908.258 1.715.719 2.38L4 17z"/>
+        </svg>
         <h1 class="detail-name" id="detail-name"></h1>
         <p class="detail-address" id="detail-address"></p>
         <div class="detail-actions">
           <button class="action-btn primary" onclick="openBookingModal()">
-            📅 Book a Table
+            <svg class="icon-coffee" style="width:16px;height:16px;margin-right:6px" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+            </svg>
+            Book a Table
           </button>
           <button class="action-btn" id="favorite-btn" onclick="toggleFavorite()">
-            🤍 Add to Favorites
+            <svg class="icon-coffee" style="width:16px;height:16px;margin-right:6px" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            Add to Favorites
           </button>
           <button class="action-btn" onclick="shareCafe()">
-            📤 Share
+            <svg class="icon-coffee" style="width:16px;height:16px;margin-right:6px" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+            </svg>
+            Share
           </button>
         </div>
       </div>

@@ -128,7 +128,7 @@ function renderGrid(list) {
   }
 
   grid.innerHTML = list.map(c => `
-    <div class="cafe-card" onclick="openCafeDetail('${c.docId}')">
+    <div class="cafe-card" tabindex="0" role="button" aria-label="View details for ${c.name}" onclick="openCafeDetail('${c.docId}')" onkeydown="if(event.key === 'Enter') openCafeDetail('${c.docId}')">
       <div class="cafe-card-image">
         <img src="${c.imagePath || '/images/placeholder.jpg'}" alt="${c.name}" onerror="this.style.display='none'">
       </div>
