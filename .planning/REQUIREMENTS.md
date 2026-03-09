@@ -30,10 +30,10 @@
 
 ### General
 
-- [ ] **GEN-01**: All pages (auth, index, café-detail, bookings, favorites, reviews) load without JavaScript errors
-- [ ] **GEN-02**: Firebase initialization succeeds on all pages
-- [ ] **GEN-03**: User authentication state persists correctly across page navigation
-- [ ] **GEN-04**: No 15-second timeouts on Firestore queries (bookings, reviews)
+- [x] **GEN-01**: All pages (auth, index, café-detail, bookings, favorites, reviews) load without JavaScript errors
+- [x] **GEN-02**: Firebase initialization succeeds on all pages
+- [x] **GEN-03**: User authentication state persists correctly across page navigation
+- [x] **GEN-04**: No 15-second timeouts on Firestore queries (bookings, reviews, favorites, cafe-detail)
 
 ## v2 Requirements
 
@@ -67,10 +67,10 @@
 | REV-03 | Phase 3 | Pending |
 | REV-04 | Phase 3 | Pending |
 | REV-05 | Phase 3 | Pending |
-| GEN-01 | Phase 4 | Pending |
-| GEN-02 | Phase 4 | Pending |
-| GEN-03 | Phase 4 | Pending |
-| GEN-04 | Phase 4 | Pending |
+| GEN-01 | Phase 4 | Complete |
+| GEN-02 | Phase 4 | Complete |
+| GEN-03 | Phase 4 | Complete |
+| GEN-04 | Phase 4 | Complete |
 
 ---
 

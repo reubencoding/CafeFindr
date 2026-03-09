@@ -96,7 +96,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] phase-4-01-PLAN.md — Add 15-second timeout protection to all remaining Firestore queries (reviews, favorites, cafe-detail) to ensure consistent performance and prevent indefinite hanging.
+- [x] phase-4-01-PLAN.md — Add 15-second timeout protection to all remaining Firestore queries (reviews, favorites, cafe-detail) to ensure consistent performance and prevent indefinite hanging. (Completed 2026-03-09)
 
 ---
 
