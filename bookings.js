@@ -7,11 +7,22 @@ let bookings = [];
 let bookingToCancel = null;
 let fallbackTimer = null;
 
+// Helper: Wrap promises with 15-second timeout
+function withTimeout(promise, timeout = 15000) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('Query timeout after 15 seconds')), timeout)
+    )
+  ]);
+}
+
 // Ensure no modal is left open on page load
 document.getElementById('cancel-modal')?.classList.remove('open');
 
 // Initialize
 auth.onAuthStateChanged((user) => {
+  console.log('[auth] state changed:', user ? 'signed in' : 'signed out');
   if (user) {
     currentUser = user;
     const userDisplay = document.getElementById('user-display');
@@ -38,6 +49,14 @@ auth.onAuthStateChanged((user) => {
   }
 });
 
+// Fallback: if auth state hasn't fired within 2 seconds, try loading anyway
+setTimeout(() => {
+  if (!currentUser) {
+    console.warn('[bookings] Auth state not yet determined, attempting loadBookings() as fallback');
+    loadBookings();
+  }
+}, 2000);
+
 // Load bookings
 function showErrorState(message) {
   const container = document.getElementById('bookings-container');
@@ -57,6 +76,7 @@ function showErrorState(message) {
 
 async function loadBookings() {
   console.log('[loadBookings] called');
+
   // Clear any existing fallback timer
   if (fallbackTimer) {
     clearTimeout(fallbackTimer);
@@ -87,40 +107,36 @@ async function loadBookings() {
     return;
   }
 
-  // Set global fallback timer - if loading persists after 20 seconds, show error
-  fallbackTimer = setTimeout(() => {
-    const container = document.getElementById('bookings-container');
-    const loadingState = container?.querySelector('.loading-state');
-    if (loadingState) {
-      showErrorState('Loading is taking too long. Please refresh the page or try again.');
-    }
-  }, 20000);
-
-  // Show loading state
-  const container = document.getElementById('bookings-container');
-  if (!container) {
-    console.error('[loadBookings] bookings-container not found');
-    if (fallbackTimer) clearTimeout(fallbackTimer);
-    return;
-  }
-  container.innerHTML = `
-    <div class="loading-state">
-      <div class="spinner"></div>
-      <p>Loading your bookings...</p>
-    </div>
-  `;
-
   try {
-    console.log('[loadBookings] Querying bookings for userId:', currentUser.uid);
-    // Wrap query in 15-second timeout
-    const timeoutPromise = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error('QUERY_TIMEOUT')), 15000)
-    );
-    const queryPromise = db.collection('bookings')
-      .where('userId', '==', currentUser.uid)
-      .get();
+    // Set fallback timer BEFORE any async work
+    fallbackTimer = setTimeout(() => {
+      const container = document.getElementById('bookings-container');
+      const loadingState = container?.querySelector('.loading-state');
+      if (loadingState) {
+        showErrorState('Loading is taking too long. Please refresh the page or try again.');
+      }
+    }, 20000);
 
-    const snapshot = await Promise.race([queryPromise, timeoutPromise]);
+    // Show loading state
+    const container = document.getElementById('bookings-container');
+    if (!container) {
+      console.error('[loadBookings] bookings-container not found');
+      throw new Error('bookings-container not found');
+    }
+    container.innerHTML = `
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading your bookings...</p>
+      </div>
+    `;
+
+    console.log('[loadBookings] Querying bookings for userId:', currentUser.uid);
+    // Wrap query with 15-second timeout using withTimeout
+    const snapshot = await withTimeout(
+      db.collection('bookings')
+        .where('userId', '==', currentUser.uid)
+        .get()
+    );
     console.log('[loadBookings] Query returned', snapshot.docs.length, 'bookings');
 
     // Clear fallback timer on success
@@ -140,14 +156,14 @@ async function loadBookings() {
 
     console.log('[loadBookings] rendering bookings');
     filterAndRenderBookings();
+
   } catch (err) {
     console.error('[loadBookings] Error:', err);
-    // Clear fallback timer on error
     if (fallbackTimer) {
       clearTimeout(fallbackTimer);
       fallbackTimer = null;
     }
-    if (err.message === 'QUERY_TIMEOUT') {
+    if (err.message === 'Query timeout after 15 seconds' || err.message === 'QUERY_TIMEOUT') {
       showErrorState('Request timed out after 15 seconds. Please check your connection and try again.');
     } else {
       showErrorState('Failed to load bookings: ' + err.message);
